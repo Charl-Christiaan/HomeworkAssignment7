@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Item</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 style="text-align: center">Add Item:</h1>
+
+    <div class="div" style="border:dotted; text-align:center">
+        @using (Html.BeginForm("Index", "Shop", FormMethod.Post))
+        {
+            <h4 style="color: red;">@ViewBag.FormatException</h4>
+            <h4 style="color:red;">@ViewBag.Error</h4>
+            <table align="center" style="text-align:left">
+                <tr>
+                    <td>
+                        <label>Name:</label>
+                    </td>
+                    <td><input id="txtName" type="text" name="name" required /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Description:</label>
+                    </td>
+                    <td><input id="txtDescription" type="text" name="description" required /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Price:</label>
+                    </td>
+                    <td><input id="txtPrice" type="text" name="price" required /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Quantity Available:</label>
+                    </td>
+                    <td><input id="txtQuantity" type="text" name="quantity" required /></td>
+                </tr>
+
+            </table>
+            <br />
+            <div>
+                <table align="center">
+                    <tr>
+                        <td><input id="Save" type="submit" value="Save" class="button" /></td>
+                        <td>
+                            <a href="@Url.Action("Index","Shop")"><input id="Cancel" type="button" value="Cancel" class="button" /></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+    <br /><br />
+</body>
+</html>
