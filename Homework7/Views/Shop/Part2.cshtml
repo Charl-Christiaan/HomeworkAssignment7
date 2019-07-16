@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Part 2</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Shop", FormMethod.Post))
+    {
+        <div style="margin: auto; text-align:center;">
+            <input id="part1" type="submit" value="Click here for Part 1" class="button" style="float:right" />
+        </div>
+    }
+    <br />
+    <h1 style="text-align: center">Part 2</h1>
+
+    @using (Html.BeginForm("AddToDB", "Shop", FormMethod.Post))
+    {
+        <div class="div" style="border:dotted; text-align:center">
+            <h4 style="color: red;">@ViewBag.FormatException</h4>
+            <h4 style="color:red;">@ViewBag.Error</h4>
+            <table align="center" style="text-align:left">
+                <tr>
+                    <td>
+                        <label>Name:</label>
+                    </td>
+                    <td><input id="txtName" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Description:</label>
+                    </td>
+                    <td><input id="txtDescription" type="text" name="description" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Price:</label>
+                    </td>
+                    <td><input id="txtPrice" type="text" name="price" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Quantity Available:</label>
+                    </td>
+                    <td><input id="txtQuantity" type="text" name="quantity" /></td>
+                </tr>
+
+            </table>
+            <br />
+            <div>
+                <input id="Save" type="submit" value="Save" class="button" />
+            </div>
+        </div><br /><br />
+    }
+
+</body>
+</html>

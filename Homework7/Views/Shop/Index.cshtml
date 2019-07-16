@@ -1,0 +1,116 @@
+﻿@model  List<Homework7.Models.ShopItemViewModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: mintcream;
+            width: 30%;
+        }
+
+        th {
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Part2", "Shop"))
+    {
+        <input id="Part2" type="submit" value="Click here for part 2" class="button" style="float:right" />
+    }
+    <br />
+    <div style="text-align:center"><h1 style="color:brown;">Espresso Patronum</h1></div>
+
+    @using (Html.BeginForm("AddItem", "Shop", FormMethod.Post))
+    {
+        <div class="div" style="width:auto;">
+
+            <table align="center">
+                <tr style="background-color:transparent">
+                    <td><input id="Add" type="submit" value="Add" class="button" style="float:left" /></td>
+                </tr>
+                <tr>
+                    <th>Shop Items</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Description</th>
+                    <th>Price (R)</th>
+                    <th>Quantity Available (ml)</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MName</td>
+                        <td>@item.MDescription</td>
+                        <td>R @item.MAmount,00</td>
+                        <td>@item.MQuantityAvailable</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+
+    <div style="text-align:center;">
+        <h3 style="color:brown;"><u>Sort function</u></h3>
+        <table align="center">
+            <tr style="background-color: transparent">
+                <td>
+                    @using (Html.BeginForm("OrderByName", "Shop"))
+                    {
+                        <input id="SortByName" type="submit" value="Sort By Name" class="button" name="sortByname" />
+                        <br />
+                    }
+            </tr>
+            <tr style="background-color: transparent">
+                <td>
+                    @using (Html.BeginForm("SortByPrice", "Shop"))
+            {
+                        <input id="SortByPrice" type="submit" value="Sort By Price" class="button" />
+                    }
+                </td>
+                <td>
+                    <input id="HowManyItems" type="submit" value="How many items are in the list?" class="button" onclick="myAlert()" />
+                    <br />
+                </td>
+            </tr>
+            <tr style="background-color: transparent">
+                <td>
+                    @using (Html.BeginForm("SortByQuantity", "Shop"))
+                    {
+                        <input id="SortByQuantity" type="submit" value="Sort By Quantity" class="button" />
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function myAlert() {
+            alert("There are " + @ViewBag.Number + " Item(s) in the List");
+        }
+    </script>
+</body>
+</html>
